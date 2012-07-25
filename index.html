@@ -5,11 +5,11 @@
       <script>
          window.onload = function() {
             var madness = document.getElementById('colorMadness');
-            madness.style.cssText = "width:100%;height:100%;background:#000;";
+            madness.style.cssText = "width:100%;height:100%;background:"+get_random_color()+";";
 
-            var intervalMax = 5000;
-            var minimumInterval = 1000;
-            var fadeTime = 1000;
+            var intervalMax = 7000;
+            var minimumInterval = 2000;
+            var fadeTime = 2000;
 
             var f = function() {
                var id = setInterval(function() {
@@ -27,12 +27,15 @@
             snowman.attr('style', 'padding-top:15%;text-align:center;');
 
             var g = function() {
+
+
               snowman.animate({ fontSize : '3000%', }, 300, function() {
                   snowman.animate({ fontSize : '100%'}, 300, function() {
 
                       g();
                       snowman.delay(3000);
-                      snowman.html(randUnicode());
+                      //snowman.html(randUnicode());
+                      snowman.html("");
                   });
               });
             };
