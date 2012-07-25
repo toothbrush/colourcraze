@@ -1,4 +1,7 @@
 colourcraze
 ===========
 
-Just random madness
+Just random madness.
+
+See http://toothbrush.github.com/colourcraze/
+
