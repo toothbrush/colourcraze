@@ -6,19 +6,21 @@
          window.onload = function() {
             var madness = document.getElementById('colorMadness');
             madness.style.cssText = "width:100%;height:100%;background:#000;";
-            
-            var intervalMax = 200;
+
+            var intervalMax = 5000;
+            var minimumInterval = 1000;
+            var fadeTime = 1000;
 
             var f = function() {
                var id = setInterval(function() {
                   var newColor = get_random_color();
                   var r = Math.max(intervalMax, Math.random() * intervalMax);
-                  $(madness).animate({ backgroundColor: newColor }, r, function() {
+                  $(madness).animate({ backgroundColor: newColor }, fadeTime, function() {
                     madness.style.background = newColor;
                     clearInterval(id);
                     f();
                   });
-               }, Math.max(intervalMax, Math.random() * intervalMax));
+               }, Math.max(intervalMax, minimumInterval + Math.random() * intervalMax));
             }
 
             var snowman = $('#snowman');
@@ -27,8 +29,10 @@
             var g = function() {
               snowman.animate({ fontSize : '3000%', }, 300, function() {
                   snowman.animate({ fontSize : '100%'}, 300, function() {
-                    g();
-                    snowman.html(randUnicode());
+
+                      g();
+                      snowman.delay(3000);
+                      snowman.html(randUnicode());
                   });
               });
             };
