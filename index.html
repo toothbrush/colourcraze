@@ -1,11 +1,11 @@
 <html>
    <head>
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-      <script src="http://subtext.googlecode.com/svn-history/r4074/branches/Release2.5/src/Subtext.Web/Scripts/jquery.color.min.js"></script>
+      <script src="https://raw.github.com/jquery/jquery-color/master/jquery.color.js"></script>
       <script>
          window.onload = function() {
             var madness = document.getElementById('colorMadness');
-            madness.style.cssText = "width:100%;height:100%;background:"+get_random_color()+";";
+            madness.style.cssText = "width:100%;height:100%;" //background:"+get_random_color()+";";
 
             var intervalMax = 7000;
             var minimumInterval = 2000;
@@ -16,7 +16,6 @@
                   var newColor = get_random_color();
                   var r = Math.max(intervalMax, Math.random() * intervalMax);
                   $(madness).animate({ backgroundColor: newColor }, fadeTime, function() {
-                    madness.style.background = newColor;
                     clearInterval(id);
                     f();
                   });
@@ -41,12 +40,8 @@
             };
 
             function get_random_color() {
-                var letters = '0123456789ABCDEF'.split('');
-                var color = '#';
-                for (var i = 0; i < 6; i++ ) {
-                    color += letters[Math.round(Math.random() * 15)];
-                }
-                return color;
+                var hue = Math.floor(Math.random()*360);
+                return "hsla("+hue+", 75%, 60%, 1)";
             }
 
             function randUnicode() {
